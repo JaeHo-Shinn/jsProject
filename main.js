@@ -8,8 +8,6 @@
 // 범위 밖 숫자 입력 ==> 기회를 깎지 않는다, 범위내 숫자 입력 안내
 // 이미 입력한 숫자 입력 ==> 기회를 깎지 않는다, 안내한다
 
-//1. 랜덤번호 설정
-
 let computerNumber = 0;
 let chance = 5;
 let gameOver = false;
