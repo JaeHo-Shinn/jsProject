@@ -11,10 +11,16 @@
 //1. 랜덤번호 설정
 
 let computerNumber = 0;
+let chance = 5;
+let gameOver = false;
+let history = [];
+
 let userNumberForm = document.querySelector(".user_number_form");
 let userNumberInput = document.querySelector(".user_number_form_input");
 let userNumberSubmit = document.querySelector(".user_number_form_submit");
+
 let resetbtn = document.querySelector(".reset");
+let chanceRest = document.querySelector(".chance__rest");
 let result = document.querySelector(".result");
 
 function randomNumber() {
@@ -27,29 +33,57 @@ randomNumber();
 function play(event) {
   event.preventDefault();
   let userNumber = userNumberInput.value;
-  console.log(userNumber);
-  if (userNumber == computerNumber) {
-    result.textContent = "정답";
-    userNumberInput.value = null;
-    return randomNumber();
-  }
+
   if (userNumber > 100 || userNumber < 1) {
     result.textContent = "1~100까지의 숫자 입력";
-  } else if (userNumber > computerNumber) {
+    return;
+  }
+
+  if (history.includes(userNumber)) {
+    result.textContent = "이미 입력한 숫자 입니다";
+    return;
+  }
+
+  if (userNumber == computerNumber) {
+    result.textContent = "정답";
+    userNumberSubmit.disabled = true;
+    return randomNumber();
+  }
+
+  if (userNumber > computerNumber) {
     result.textContent = "DOWN";
   } else if (userNumber < computerNumber) {
     result.textContent = "UP";
   }
-  userNumberInput.value = null;
-}
 
-userNumberSubmit.addEventListener("click", play);
+  history.push(userNumber);
+
+  chance--;
+  chanceRest.innerText = chance;
+
+  if (chance < 1) {
+    gameOver = true;
+  }
+  if (gameOver == true) {
+    userNumberSubmit.disabled = true;
+  }
+}
 
 function resetfunc(event) {
   event.preventDefault();
   userNumberInput.value = "";
   randomNumber();
   result.textContent = "시작";
+  userNumberSubmit.disabled = false;
+  chance = 5;
+  chanceRest.innerText = chance;
+  history = [];
 }
 
+userNumberSubmit.addEventListener("click", play);
+
 resetbtn.addEventListener("click", resetfunc);
+
+userNumberInput.addEventListener("focus", function () {
+  userNumberInput.value = null;
+});
