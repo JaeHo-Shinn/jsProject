@@ -1,0 +1,22 @@
+@keyframes rest-chance {
+  0% {
+    font-size: 20px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  50% {
+    font-size: 22px;
+    border-radius: 23px;
+    margin-bottom: 8px;
+    background-color: rgb(196, 3, 19);
+  }
+  100% {
+    font-size: 20px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+}
+
+.chance:hover {
+  animation: rest-chance 0.7s ease-in-out infinite;
+}

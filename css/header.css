@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header__title {
+  font-size: 35px;
+  font-weight: 600;
+}
+
+.header__rules {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 60px 0px 20px 0px;
+}
+
+.header__rules__list li {
+  padding-bottom: 10px;
+}

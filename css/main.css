@@ -1,0 +1,88 @@
+.display {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0px 10px 0px;
+}
+
+.result {
+  display: flex;
+  font-size: 50px;
+}
+
+.arrow {
+  display: flex;
+  font-size: 50px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 150px;
+}
+
+.overrange {
+}
+.used-number {
+}
+
+.user-number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-number__input,
+.user-number__Btn,
+.user-number__reset {
+  margin: 20px 2px;
+}
+
+.user-number__input::-webkit-outer-spin-button,
+.user-number__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.user-number__input:focus::placeholder {
+  color: transparent;
+}
+
+.chance_div {
+}
+
+.chance {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  margin-bottom: 10px;
+  font-size: 20px;
+  padding: 10px 20px;
+  background-color: rgb(168, 0, 14);
+  border-radius: 20px;
+  color: beige;
+}
+
+@keyframes rest-chance {
+  0% {
+    font-size: 20px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  50% {
+    font-size: 22px;
+    border-radius: 23px;
+    margin-bottom: 8px;
+    background-color: rgb(196, 3, 19);
+  }
+  100% {
+    font-size: 20px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+}
+
+.chance:hover {
+  animation: rest-chance 0.7s ease-in-out infinite;
+}

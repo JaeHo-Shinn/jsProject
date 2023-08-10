@@ -20,6 +20,7 @@ let history = [];
 let userNumberInput = document.querySelector(".user-number__input");
 let userNumberBtn = document.querySelector(".user-number__Btn");
 let userNumberReset = document.querySelector(".user-number__reset");
+let arrow = document.querySelector(".arrow");
 
 let result = document.querySelector(".result");
 let restChance = document.querySelector(".chance");
@@ -30,20 +31,27 @@ function getUserNumber(event) {
   userNumber = userNumberInput.value;
 
   console.log(userNumber);
-
-  if (userNumber < 1 || userNumber > 100) {
-    result.textContent = "1~100의 숫자를 입력하세요";
+  if (userNumber == null || userNumber == undefined) {
+    result.textContent = "Input Number";
     return;
   }
+
+  if (userNumber < 1 || userNumber > 100) {
+    result.textContent = "Input 1~100";
+    return;
+  }
+
   if (history.includes(userNumber)) {
-    result.textContent = "중복되었습니다";
+    result.textContent = `${userNumber} is used`;
     return;
   }
 
   if (userNumber > randomNumber) {
     result.textContent = "DOWN!!";
+    arrow.className = "arrow-down";
   } else if (userNumber < randomNumber) {
     result.textContent = "UP!!";
+    arrow.className = "arrow-up";
   } else {
     result.textContent = "Correct!!";
     userNumberBtn.disabled = true;
@@ -71,10 +79,22 @@ function setUp(event) {
   chance = 5;
   restChance.textContent = `Chance ${chance}`;
   result.textContent = "Start!!";
+  userNumberBtn.disabled = false;
+  history = [];
+  if (arrow.className === "arrow-up") {
+    arrow.className = "arrow-up-to-reset";
+  } else if (arrow.className === "arrow-down") {
+    arrow.className = "arrow-down-to-reset";
+  }
 }
 
 userNumberBtn.addEventListener("click", getUserNumber);
 userNumberReset.addEventListener("click", setUp);
 userNumberInput.addEventListener("focus", function () {
   userNumberInput.value = null;
+  if (arrow.className === "arrow-up") {
+    arrow.className = "arrow-up-to-reset";
+  } else if (arrow.className === "arrow-down") {
+    arrow.className = "arrow-down-to-reset";
+  }
 });

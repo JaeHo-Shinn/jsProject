@@ -7,20 +7,29 @@
     <link rel="stylesheet" href="style_self.css" />
   </head>
   <body>
-    <header>
-      <h1>숫자 맞추기 게임</h1>
-      <h2>게임 설명</h2>
-      <ol>
-        <li>1~100까지의 랜덤 숫자</li>
-        <li>예상 숫자 입력</li>
-        <li>예상 숫자보다 크면 UP, 작으면 Down</li>
-        <li>기회 5번</li>
+    <header class="header">
+      <h1 class="header__title">
+        <span>Up</span>
+        <span>&</span>
+        <span>Down</span>
+      </h1>
+      <h2 class="header__rules">게임 설명</h2>
+      <ol class="header__rules__list">
+        <li>1. 1~100까지의 랜덤 숫자</li>
+        <li>2. 예상 숫자 입력</li>
+        <li>3. 예상 숫자보다 크면 UP, 작으면 Down</li>
+        <li>4. 기회 5번</li>
       </ol>
     </header>
     <main>
-      <div>
-        <span class="result">Start!!</span> <br />
-        <span class="chance">Chance 5</span>
+      <div class="display">
+        <span class="result">Start!!</span>
+        <span class="arrow"
+          ><i class="fa-solid fa-arrow-right fa-2xl"></i
+        ></span>
+        <div class="chancediv">
+          <span class="chance">Chance 5</span>
+        </div>
       </div>
       <form class="user-number">
         <input
@@ -33,5 +42,9 @@
       </form>
     </main>
     <script src="main_self.js"></script>
+    <script
+      src="https://kit.fontawesome.com/9fa7a08d01.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
